@@ -1,0 +1,77 @@
+<div class="card">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h2>{{ image.title }}</h2>
+        <button class="btn btn-danger" id="btn-delete" data-id= "{{image.uniqueId}}"> <!--si me voy a la consola del explorador voy a ver que me da el id en data-id, los cuales van a ser mis dos datos para q funcione con ayaks-->
+            <i class="fa fa-times"></i> Eliminar
+        </button>
+    </div>
+    <div class="card-body">
+        <p>{{image.description}}</p>
+        <div class="text-center">
+            <img src="/public/upload/{{image.filename}}" alt="" class="img-fluid"> <!-- el img-fluid lo utilizo xq al cargar la imagen se sale del recuadro, con esto toma el tamano del recuadro-->
+        </div>
+    </div>
+    <div class="card-footer d-flex justify-content-between align-items-center">
+        <button class="btn btn-success" id="btn-like" data-id="{{image.filename}}">
+            <i class="fas fa-thumbs-up"></i> Me gusta
+        </button>
+         <p>
+             <span class="likes-count">{{image.likes}}</span>
+            <i class="fas fa-heart"></i>
+        </p>
+         <p>
+            <i class="fas fa-eye"></i>{{image.views}}
+        </p>
+        <p>
+            <i class="far fa-clock"></i>
+            {{timeago image.timestamp}} <!--helper + el timestamp, donde voy a poder ver la fecha formateada-->
+        </p>
+    </div>
+</div>
+
+<div class="card mt-2">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h3>Comentarios</h3>
+        <button class="btn btn-info" id="btn-toggle-comment">
+            <i class="fa fa-coment-0"></i>Publica un comentario
+
+        </button>
+    </div>
+    <div class="card-body" id="post-comment">
+        <blockquote> <!--envia peticion al serividor para guardar comentario, a traves de la ruta de index.js de la carpeta routs-->
+            <form action="/images/{{image.uniqueId}}/comment" method="POST">
+                <div class="form-group">
+                    <input type="text" class="form-control" name="name" placeholder="Nombre y Apellido">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="email" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <textarea name="comment"  rows="2" class="form-control" placeholder="Tu comentario"></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success" id="btn-comment">
+                        <i class="fa fa-comment"></i>Publicar
+                    </button>
+                </div>
+            </form>
+        </blockquote>
+        <ul class="list-group p-4">
+            {{#each comments}}
+                <li class="list-group-item">
+                    <div class="row">
+                        <a href="#" class="col text-center">
+                            <img src="http://gravatar.com/avatar/{{gravatar}}?d=monsterid&s=45" alt="">
+                        </a> 
+                        <blockquote>
+                            <p class="lead">{{comment}}</p>
+                            <footer class="blockquote-footer">
+                                {{name}} - {{timeago timestamp}}
+                            </footer>
+                        </blockquote>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>

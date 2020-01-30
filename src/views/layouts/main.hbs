@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>preoyecto_redsocial_Sukata</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+
+        <!-- font awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+        <!-- bootstrap 4 -->
+        <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.min.css"> <!--href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"-->
+        <!-- css -->
+        <link rel="stylesheet" href="/public/css/styles.css">
+    </head>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <div class = "container ">
+            <a href="/" class="navbar-brand" >
+                <img src="/public/img/logo.png"  class='icono-principal' alt="logo.png">
+            </a>
+        </div>
+    </nav>  
+
+    <div class="container p-4">
+        <div class="row">
+            <div class="col-md-12">
+                 <!-- llaves propiad de hbs, -->
+                 {{{body}}}
+            </div>
+            {{!-- <div class="col-md-4">
+                    {{> stats }} <!--estoy llamando al parcial de la carpeta views-->
+                    {{> popular }}
+            </div> --}}
+        </div>
+    </div>
+    <!--Scripts-->
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+    <!--codigo costumizado-->
+    <script src="/public/js/scripts.js"></script>
+</body>
+</html>

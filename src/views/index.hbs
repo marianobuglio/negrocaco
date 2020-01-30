@@ -1,0 +1,65 @@
+<div class="row">
+<div class="col-8">
+<div class="card">
+    <div class="car/header bg-dark">
+        <h3 class="card-title text-white">
+            <i class="far fa-image"></i> Carga una imagen
+        </h3>
+    </div>
+    <div class="car-body">
+        <!--FORMULARIO-->
+        <form action="/images" method="POST" enctype="multipart/form-data">
+            <!-- enviamos los datos a traves de la ruta la ruta /images y el motodo post, si te vas al archivo index.js de la carpeta oruts, podras ver que las rutas con con el metodo post,con el enctype="multipart/form-data" enviamos otro tipo de dato q no sea texto como por ej imagenes-->
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="custom-file">
+                        <input type="file" name="image" class="custom-file-input" id="inputGroupFile"
+                            aria-describedby="inputGroupFileAddon" required>
+                        <!-- lo mas necesario es name y class, el resto es pare que aparezca mejor -->
+                        <label class="custom-file-label" for="inputGroupFile">Selecciona el archivo</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" name="title" class="form-control" placeholder="Titulo de la imagen">
+            </div>
+            <div class="form-group">
+                <textarea name="description" rows="2" class="form-control" placeholder="Descripcion de la imagen" required></textarea>
+                <!--con el required hago la validacion-->
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success">
+                    <!-- para darle estilo al boton -->
+                    <i class="fa fa-upload"></i> Cargar imagen
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="card mt-2"> <!--formulario-->
+    <div class="card-header bg-dark text-white">
+        <h3><i class="far fa-images"></i>Imagenes recientes</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            {{#each images}}
+                <div class="col-md-4">
+                    <a href="/images/{{uniqueId}}">
+                        <img src="/public/upload/{{filename}}" alt="" class="w-100 h-100 img-thumbnail">
+                    </a>
+                </div>
+            {{/each}}            
+        </div>
+    </div>
+</div>  
+</div>
+<div class="col-4">
+      
+                    {{> stats }} <!--estoy llamando al parcial de la carpeta views-->
+                    {{> popular }}
+
+</div>
+
+</div>
+
+
