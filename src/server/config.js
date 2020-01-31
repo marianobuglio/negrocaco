@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const multer = require('multer');
 const express = require('express');//no para servidor sino para importar middlewares
 const errorhandler = require('errorhandler');
+const cookieParser = require('cookie-parser');
 
 const routes = require('../routes/index');
     //routes es una funcion
@@ -28,6 +29,13 @@ module.exports = app => {
     
 
     //middlewares
+
+    app.use(cookieParser());
+    app.use(session({
+        secret: 'keyboard cat',
+        resave: false,
+        saveUninitialized: true
+      }))
     app.use(morgan('dev'))//configuracion dev
     app.use(multer({dest: path.join(__dirname, '../public/upload/temp')}).single('image'));//dest(destino),concateno dirname, '../public/upload/temp'= lo que estoy diciendo aqui es q suba un nivel,entre en la carpeta unpload y dentro de la carpeta temp (temopral) coloque las imgenes, de esta forma la puedo mover 
     app.use(express.urlencoded({extended: false}));

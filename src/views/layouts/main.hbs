@@ -22,6 +22,12 @@
                 <img src="/public/img/logo.png"  class='icono-principal' alt="logo.png">
             </a>
         </div>
+       
+            {{#if loggedIn}}
+                <div>
+                    <a href="/logout" class="float-rigth" >Salir</a>
+                </div>
+             {{/if}}
     </nav>  
 
     <div class="container p-4">
